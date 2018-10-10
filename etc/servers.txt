@@ -1,0 +1,16 @@
+r1q2ded.x86_64:
+    q2coop
+    xatrixcoop
+    roguecoop
+
+r1q2ded-old:
+    kick
+
+q2pro:
+    q2dm
+    q2dm64
+    xatrixdm
+    roguedm
+
+q2proded-i386:
+    ctf

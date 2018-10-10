@@ -1,0 +1,12 @@
+diff --git a/game/g_phys.c b/game/g_phys.c
+index 4c45eea..3731616 100644
+--- a/game/g_phys.c
++++ b/game/g_phys.c
+@@ -942,6 +942,7 @@ void G_RunEntity (edict_t *ent)
+ 		SV_Physics_Pusher (ent);
+ 		break;
+ 	case MOVETYPE_NONE:
++	case MOVETYPE_WALK:
+ 		SV_Physics_None (ent);
+ 		break;
+ 	case MOVETYPE_NOCLIP:

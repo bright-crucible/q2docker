@@ -1,0 +1,2 @@
+#!/bin/bash
+venv/bin/docker-compose --file q2.yml build --pull --force-rm "$@"
