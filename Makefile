@@ -8,6 +8,9 @@ help:
 build:
 	@bin/build_quake2
 
+logs:
+	@$(COMPOSE) logs
+
 start:
 	@bin/start_quake2
 

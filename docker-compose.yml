@@ -1,12 +1,43 @@
-version: '2'
+version: '3.7'
 services:
     q2dm:
-        extends:
-            file: common.yml
-            service: q2dm
-        build: q2dm
+        build:
+            context: .
+            target: q2dm
+        image: brightcrucible/q2dm
+        restart: unless-stopped
+        volumes:
+            - $PWD/data/baseq2:/quake2/baseq2
+        ports:
+            - "27904:27904/udp"
+    q2dm64:
+        build:
+            context: .
+            target: q2dm64
+        image: brightcrucible/q2dm64
+        restart: unless-stopped
+        volumes:
+            - $PWD/data/baseq2:/quake2/baseq2
+        ports:
+            - "27905:27905/udp"
+    xatrixdm:
+        build:
+            context: .
+            target: xatrixdm
+        image: brightcrucible/xatrixdm
+        restart: unless-stopped
+        volumes:
+            - $PWD/data/baseq2:/quake2/baseq2
+            - $PWD/data/xatrix:/quake2/xatrix
+        ports:
+            - "27906:27906/udp"
     q2coop:
-        extends:
-            file: common.yml
-            service: q2coop
-        build: q2coop
+        build:
+            context: .
+            target: q2coop
+        image: brightcrucible/q2coop
+        restart: unless-stopped
+        volumes:
+            - $PWD/data/baseq2:/quake2/baseq2
+        ports:
+            - "27901:27901/udp"
