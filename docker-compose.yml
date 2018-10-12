@@ -41,3 +41,14 @@ services:
             - $PWD/data/baseq2:/quake2/baseq2
         ports:
             - "27901:27901/udp"
+    kick:
+        build:
+            context: .
+            target: kick
+        image: brightcrucible/kick
+        restart: unless-stopped
+        volumes:
+            - $PWD/data/baseq2:/quake2/baseq2
+            - $PWD/data/kick:/quake2/kick
+        ports:
+            - "27908:27908/udp"

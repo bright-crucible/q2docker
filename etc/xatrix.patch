@@ -1,0 +1,27 @@
+diff -u ./g_items.c ../modified/g_items.c
+--- ./g_items.c	2018-10-11 10:50:28.752470207 -0700
++++ ../modified/g_items.c	2018-10-11 10:52:44.312472127 -0700
+@@ -26,9 +26,9 @@
+ gitem_armor_t combatarmor_info	= { 50, 100, .60, .30, ARMOR_COMBAT};
+ gitem_armor_t bodyarmor_info	= {100, 200, .80, .60, ARMOR_BODY};
+ 
+-static int	jacket_armor_index;
+-static int	combat_armor_index;
+-static int	body_armor_index;
++int	jacket_armor_index;
++int	combat_armor_index;
++int	body_armor_index;
+ static int	power_screen_index;
+ static int	power_shield_index;
+ 
+diff -u ./g_phys.c ../modified/g_phys.c
+--- ./g_phys.c	2018-10-11 10:50:28.822468658 -0700
++++ ../modified/g_phys.c	2018-10-11 10:52:44.312472127 -0700
+@@ -933,6 +933,7 @@
+ 	case MOVETYPE_STOP:
+ 		SV_Physics_Pusher (ent);
+ 		break;
++    case MOVETYPE_WALK:
+ 	case MOVETYPE_NONE:
+ 		SV_Physics_None (ent);
+ 		break;

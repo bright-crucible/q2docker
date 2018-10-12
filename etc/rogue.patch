@@ -1,0 +1,46 @@
+diff -u ./g_items.c ../modified/g_items.c
+--- ./g_items.c	2018-10-11 15:29:54.109513807 -0700
++++ ../modified/g_items.c	2018-10-11 15:28:54.366819844 -0700
+@@ -34,9 +34,9 @@
+ gitem_armor_t combatarmor_info	= { 50, 100, .60, .30, ARMOR_COMBAT};
+ gitem_armor_t bodyarmor_info	= {100, 200, .80, .60, ARMOR_BODY};
+ 
+-static int	jacket_armor_index;
+-static int	combat_armor_index;
+-static int	body_armor_index;
++int	jacket_armor_index;
++int	combat_armor_index;
++int	body_armor_index;
+ static int	power_screen_index;
+ static int	power_shield_index;
+ 
+diff -u ./g_local.h ../modified/g_local.h
+--- ./g_local.h	2018-10-11 15:29:54.124513479 -0700
++++ ../modified/g_local.h	2018-10-11 15:28:54.465817679 -0700
+@@ -22,13 +22,13 @@
+ //==================================================================
+ 
+ #ifndef _WIN32
+-#include <nan.h>
++#include <math.h>
+ #define min(a,b) ((a) < (b) ? (a) : (b))
+ #define max(a,b) ((a) > (b) ? (a) : (b))
+ #ifdef __sun__
+ #define _isnan(a) (NaN((a)))
+ #else
+-#define _isnan(a) ((a)==NAN)
++#define _isnan(a) (isnan(a))
+ #endif
+ #endif
+ 
+diff -u ./g_phys.c ../modified/g_phys.c
+--- ./g_phys.c	2018-10-11 15:29:54.270510288 -0700
++++ ../modified/g_phys.c	2018-10-11 15:28:54.391819297 -0700
+@@ -962,6 +962,7 @@
+ 		case MOVETYPE_STOP:
+ 			SV_Physics_Pusher (ent);
+ 			break;
++        case MOVETYPE_WALK:
+ 		case MOVETYPE_NONE:
+ 			SV_Physics_None (ent);
+ 			break;
