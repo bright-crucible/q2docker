@@ -31,6 +31,17 @@ services:
             - $PWD/data/xatrix:/quake2/xatrix
         ports:
             - "27906:27906/udp"
+    roguedm:
+        build:
+            context: .
+            target: roguedm
+        image: brightcrucible/roguedm
+        restart: unless-stopped
+        volumes:
+            - $PWD/data/baseq2:/quake2/baseq2
+            - $PWD/data/rogue:/quake2/rogue
+        ports:
+            - "27907:27907/udp"
     q2coop:
         build:
             context: .
@@ -41,6 +52,28 @@ services:
             - $PWD/data/baseq2:/quake2/baseq2
         ports:
             - "27901:27901/udp"
+    xatrixcoop:
+        build:
+            context: .
+            target: xatrixcoop
+        image: brightcrucible/xatrixcoop
+        restart: unless-stopped
+        volumes:
+            - $PWD/data/baseq2:/quake2/baseq2
+            - $PWD/data/xatrix:/quake2/xatrix
+        ports:
+            - "27902:27902/udp"
+    roguecoop:
+        build:
+            context: .
+            target: roguecoop
+        image: brightcrucible/roguecoop
+        restart: unless-stopped
+        volumes:
+            - $PWD/data/baseq2:/quake2/baseq2
+            - $PWD/data/rogue:/quake2/rogue
+        ports:
+            - "27903:27903/udp"
     kick:
         build:
             context: .
@@ -52,3 +85,14 @@ services:
             - $PWD/data/kick:/quake2/kick
         ports:
             - "27908:27908/udp"
+    ctf:
+        build:
+            context: .
+            target: ctf
+        image: brightcrucible/ctf
+        restart: unless-stopped
+        volumes:
+            - $PWD/data/baseq2:/quake2/baseq2
+            - $PWD/data/ctf:/quake2/ctf
+        ports:
+            - "27909:27909/udp"
