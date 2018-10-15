@@ -1,9 +1,9 @@
 FROM alpine:3.8 as buildq2pro
-
 RUN apk add --no-cache \
     git make libcurl \
     zlib-dev linux-headers \
-    build-base screen util-linux wget
+    build-base screen util-linux wget tzdata
+ENV TZ America/Los_Angeles
 
 WORKDIR /var/local
 RUN git clone https://github.com/skullernet/q2pro.git
@@ -45,7 +45,8 @@ RUN make q2proded && make gamex86_64.so
 
 FROM alpine:3.8 as q2probase
 RUN apk add --no-cache \
-        screen zlib
+        screen zlib tzdata
+ENV TZ America/Los_Angeles
 RUN mkdir -p /quake2/baseq2 /quake2/xatrix /quake2/rogue \
         /var/local/xatrix/release /var/local/rogue/release \
         /var/local/q2pro
@@ -96,8 +97,10 @@ CMD ["/usr/local/bin/roguedm.sh"]
 
 
 FROM centos:7 as buildr1q2
+ENV TZ=America/Los_Angeles
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime
 RUN yum -y groupinstall 'Development Tools'
-RUN yum -y install zlib-devel which screen sysvinit-tools util-linux wget
+RUN yum -y install zlib-devel which screen wget
 
 WORKDIR /var/local
 RUN mkdir xatrix rogue
@@ -145,6 +148,8 @@ RUN make gamex86_64.so
 
 
 FROM centos:7 as r1q2base
+ENV TZ=America/Los_Angeles
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime
 RUN yum -y install screen zlib
 RUN mkdir -p /quake2/baseq2 /quake2/xatrix /quake2/rogue \
         /var/local/xatrix/release /var/local/rogue/release \
@@ -187,6 +192,8 @@ CMD ["/usr/local/bin/roguecoop.sh"]
 
 
 FROM i386/centos:7 as kick
+ENV TZ=America/Los_Angeles
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime
 RUN yum -y install screen unzip zlib
 
 RUN mkdir -p /quake2/baseq2 /quake2/kick
@@ -207,7 +214,8 @@ CMD ["/usr/local/bin/kick.sh"]
 
 
 FROM i386/centos:7 as ctf
-
+ENV TZ=America/Los_Angeles
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime
 RUN yum -y groupinstall 'Development Tools'
 RUN yum -y install zlib-devel which screen
 
