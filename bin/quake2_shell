@@ -1,4 +1,2 @@
 #!/bin/bash
-#./venv/bin/docker-compose exec "$@" script -c "/bin/sh" /dev/null
-#./venv/bin/docker-compose exec "$@" "/bin/sh"
-./venv/bin/docker-compose exec "$@" script -c "/usr/bin/screen -x" /dev/null
+./venv/bin/docker-compose exec "$@" screen -x "$@"

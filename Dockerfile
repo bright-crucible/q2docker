@@ -45,7 +45,7 @@ RUN make q2proded && make gamex86_64.so
 
 FROM alpine:3.8 as q2probase
 RUN apk add --no-cache \
-        screen util-linux
+        screen zlib
 RUN mkdir -p /quake2/baseq2 /quake2/xatrix /quake2/rogue \
         /var/local/xatrix/release /var/local/rogue/release \
         /var/local/q2pro
@@ -145,7 +145,7 @@ RUN make gamex86_64.so
 
 
 FROM centos:7 as r1q2base
-RUN yum -y install screen sysvinit-tools util-linux
+RUN yum -y install screen zlib
 RUN mkdir -p /quake2/baseq2 /quake2/xatrix /quake2/rogue \
         /var/local/xatrix/release /var/local/rogue/release \
         /var/local/r1q2-archive/binaries/r1q2ded \
@@ -187,7 +187,7 @@ CMD ["/usr/local/bin/roguecoop.sh"]
 
 
 FROM i386/centos:7 as kick
-RUN yum -y install zlib which screen sysvinit-tools unzip util-linux
+RUN yum -y install screen unzip zlib
 
 RUN mkdir -p /quake2/baseq2 /quake2/kick
 
@@ -209,7 +209,7 @@ CMD ["/usr/local/bin/kick.sh"]
 FROM i386/centos:7 as ctf
 
 RUN yum -y groupinstall 'Development Tools'
-RUN yum -y install zlib-devel which screen sysvinit-tools util-linux
+RUN yum -y install zlib-devel which screen
 
 RUN mkdir -p /quake2/baseq2 /quake2/ctf
 

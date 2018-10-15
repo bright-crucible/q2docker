@@ -8,4 +8,4 @@ screen -A -m -d -S roguecoop ./r1q2ded.x86_64 \
            +exec coop.cfg +set public 1 +exec r1bans.cfg +map rmine1
 
 sleep 5
-exec tail -f /proc/`pidof r1q2ded.x86_64`/fd/1
+exec tail -f /dev/null

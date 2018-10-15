@@ -9,4 +9,4 @@ screen -A -m -d -S roguedm ./q2proded \
            +setmaster master.q2servers.com +exec q2probans.cfg +map rdm1
 
 sleep 5
-exec tail -f /proc/`pidof q2proded`/fd/1
+exec tail -f /dev/null
