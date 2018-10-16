@@ -3,5 +3,5 @@ https://github.com/skullernet/q2pro.git
 https://bitbucket.org/jwaggoner/lasermine.git
 http://tastyspleen.net/quake/downloads/mods/kick/
 http://www.gamers.org/pub/idgames/idstuff/quake2/source/
-http://www.gamers.org/pub/idgames/idstuff/quake2/source/roguesrc320.shar.Z
-http://www.gamers.org/pub/idgames/idstuff/quake2/source/xatrixsrc320.shar.Z
+ftp://ftp.gamers.org/pub/idgames/idstuff/quake2/source/xatrixsrc320.shar.Z
+ftp://ftp.gamers.org/pub/idgames/idstuff/quake2/source/roguesrc320.shar.Z

@@ -6,7 +6,7 @@
 COMPOSE="venv/bin/docker-compose"
 
 help:
-	@echo "Welcome to Docker Q2!"
+	@echo "Welcome to Q2 Docker!"
 	@echo ""
 	@echo "Commands:"
 	@echo ""
