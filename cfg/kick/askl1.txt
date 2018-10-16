@@ -1,0 +1,16 @@
+-----------------------
+Welcome to
+ The Last Kick Server
+-----------------------
+
+ASKL Arena 1 - Fryth
+
+Return to the physical
+world as a ball
+
+kick player is off
+kill bonus is off
+goal bonus is on
+timelimit 20
+scorelimit 15
+

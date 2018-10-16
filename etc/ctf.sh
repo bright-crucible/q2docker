@@ -9,4 +9,4 @@ screen -A -m -d -S ctf ./q2proded-i386 \
            +exec q2probans.cfg +map q2ctf1
 
 sleep 5
-exec tail -f /dev/null
+exec tail -f /quake2/ctf/logs/console.log

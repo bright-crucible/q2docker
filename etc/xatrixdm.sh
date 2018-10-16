@@ -10,4 +10,4 @@ screen -A -m -d -S xatrixdm ./q2proded \
            +exec q2probans.cfg +map xdm1
 
 sleep 5
-exec tail -f /dev/null
+exec tail -f /quake2/xatrix/logs/console.log

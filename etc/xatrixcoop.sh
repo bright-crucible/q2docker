@@ -9,4 +9,4 @@ screen -A -m -d -S xatrixcoop ./r1q2ded.x86_64 \
            +set public 1 +exec r1bans.cfg +map xswamp
 
 sleep 5
-exec tail -f /dev/null
+exec tail -f /quake2/xatrix/qconsole.log

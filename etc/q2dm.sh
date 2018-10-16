@@ -9,4 +9,4 @@ screen -A -m -d -S q2dm ./q2proded \
            +setmaster master.q2servers.com +exec q2probans.cfg +map q2dm1
 
 sleep 5
-exec tail -f /dev/null
+exec tail -f /quake2/baseq2/logs/console.log

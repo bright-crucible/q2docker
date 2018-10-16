@@ -8,6 +8,10 @@ services:
         restart: unless-stopped
         volumes:
             - $PWD/data/baseq2:/quake2/baseq2
+            - $PWD/logs/q2dm.log:/quake2/baseq2/logs/console.log
+            - $PWD/cfg/baseq2/config.cfg:/quake2/baseq2/config.cfg
+            - $PWD/cfg/baseq2/q2dm.cfg:/quake2/baseq2/q2dm.cfg
+            - $PWD/cfg/baseq2/q2probans.cfg:/quake2/baseq2/q2probans.cfg
         ports:
             - "27904:27904/udp"
     q2dm64:
@@ -18,6 +22,10 @@ services:
         restart: unless-stopped
         volumes:
             - $PWD/data/baseq2:/quake2/baseq2
+            - $PWD/logs/q2dm64.log:/quake2/baseq2/logs/q2dm64.log
+            - $PWD/cfg/baseq2/config.cfg:/quake2/baseq2/config.cfg
+            - $PWD/cfg/baseq2/q2dm64.cfg:/quake2/baseq2/q2dm64.cfg
+            - $PWD/cfg/baseq2/q2probans.cfg:/quake2/baseq2/q2probans.cfg
         ports:
             - "27905:27905/udp"
     xatrixdm:
@@ -29,6 +37,10 @@ services:
         volumes:
             - $PWD/data/baseq2:/quake2/baseq2
             - $PWD/data/xatrix:/quake2/xatrix
+            - $PWD/logs/xatrixdm.log:/quake2/xatrix/logs/console.log
+            - $PWD/cfg/baseq2/config.cfg:/quake2/baseq2/config.cfg
+            - $PWD/cfg/xatrix/xdm.cfg:/quake2/xatrix/xdm.cfg
+            - $PWD/cfg/baseq2/q2probans.cfg:/quake2/baseq2/q2probans.cfg
         ports:
             - "27906:27906/udp"
     roguedm:
@@ -40,6 +52,10 @@ services:
         volumes:
             - $PWD/data/baseq2:/quake2/baseq2
             - $PWD/data/rogue:/quake2/rogue
+            - $PWD/logs/roguedm.log:/quake2/rogue/logs/console.log
+            - $PWD/cfg/baseq2/config.cfg:/quake2/baseq2/config.cfg
+            - $PWD/cfg/rogue/rdm.cfg:/quake2/baseq2/rdm.cfg
+            - $PWD/cfg/baseq2/q2probans.cfg:/quake2/baseq2/q2probans.cfg
         ports:
             - "27907:27907/udp"
     q2coop:
@@ -50,6 +66,10 @@ services:
         restart: unless-stopped
         volumes:
             - $PWD/data/baseq2:/quake2/baseq2
+            - $PWD/logs/q2coop.log:/quake2/baseq2/qconsole.log
+            - $PWD/cfg/baseq2/config.cfg:/quake2/baseq2/config.cfg
+            - $PWD/cfg/baseq2/coop.cfg:/quake2/baseq2/coop.cfg
+            - $PWD/cfg/baseq2/r1bans.cfg:/quake2/baseq2/r1bans.cfg
         ports:
             - "27901:27901/udp"
     xatrixcoop:
@@ -61,6 +81,11 @@ services:
         volumes:
             - $PWD/data/baseq2:/quake2/baseq2
             - $PWD/data/xatrix:/quake2/xatrix
+            - $PWD/logs/xatrixcoop.log:/quake2/xatrix/qconsole.log
+            - $PWD/cfg/baseq2/config.cfg:/quake2/baseq2/config.cfg
+            - $PWD/cfg/baseq2/coop.cfg:/quake2/baseq2/coop.cfg
+            - $PWD/cfg/xatrix/special.cfg:/quake2/xatrix/special.cfg
+            - $PWD/cfg/baseq2/r1bans.cfg:/quake2/baseq2/r1bans.cfg
         ports:
             - "27902:27902/udp"
     roguecoop:
@@ -72,6 +97,10 @@ services:
         volumes:
             - $PWD/data/baseq2:/quake2/baseq2
             - $PWD/data/rogue:/quake2/rogue
+            - $PWD/logs/roguecoop.log:/quake2/rogue/qconsole.log
+            - $PWD/cfg/baseq2/config.cfg:/quake2/baseq2/config.cfg
+            - $PWD/cfg/baseq2/coop.cfg:/quake2/baseq2/coop.cfg
+            - $PWD/cfg/baseq2/r1bans.cfg:/quake2/baseq2/r1bans.cfg
         ports:
             - "27903:27903/udp"
     kick:
@@ -83,6 +112,28 @@ services:
         volumes:
             - $PWD/data/baseq2:/quake2/baseq2
             - $PWD/data/kick:/quake2/kick
+            - $PWD/logs/kick.log:/quake2/kick/qconsole.log
+            - $PWD/cfg/baseq2/config.cfg:/quake2/baseq2/config.cfg
+            - $PWD/cfg/kick/server.cfg:/quake2/kick/server.cfg
+            - $PWD/cfg/baseq2/r1bans.cfg:/quake2/baseq2/r1bans.cfg
+            - $PWD/cfg/kick/kick.ini:/quake2/kick/kick.ini
+            - $PWD/cfg/kick/welcome.txt:/quake2/kick/welcome.txt
+            - $PWD/cfg/kick/askl1.txt:/quake2/kick/askl1.txt
+            - $PWD/cfg/kick/azarena.txt.txt:/quake2/kick/azarena.txt
+            - $PWD/cfg/kick/fragball.txt:/quake2/kick/fragball.txt
+            - $PWD/cfg/kick/hamarena.txt:/quake2/kick/hamarena.txt
+            - $PWD/cfg/kick/ice.txt:/quake2/kick/ice.txt
+            - $PWD/cfg/kick/jumpkick.txt:/quake2/kick/jumpkick.txt
+            - $PWD/cfg/kick/kcentral.txt:/quake2/kick/kcentral.txt
+            - $PWD/cfg/kick/kick1.txt:/quake2/kick/kick1.txt
+            - $PWD/cfg/kick/kick2r.txt:/quake2/kick/kick2r.txt
+            - $PWD/cfg/kick/kick3.txt:/quake2/kick/kick3.txt
+            - $PWD/cfg/kick/kick4.txt:/quake2/kick/kick4.txt
+            - $PWD/cfg/kick/kickback.txt:/quake2/kick/kickback.txt
+            - $PWD/cfg/kick/kickcastle.txt:/quake2/kick/kickcastle.txt
+            - $PWD/cfg/kick/kstation.txt:/quake2/kick/kstation.txt
+            - $PWD/cfg/kick/outpost.txt:/quake2/kick/outpost.txt
+            - $PWD/cfg/kick/wildkick.txt:/quake2/kick/wildkick.txt
         ports:
             - "27908:27908/udp"
     ctf:
@@ -94,5 +145,10 @@ services:
         volumes:
             - $PWD/data/baseq2:/quake2/baseq2
             - $PWD/data/ctf:/quake2/ctf
+            - $PWD/logs/ctf.log:/quake2/ctf/logs/console.log
+            - $PWD/cfg/baseq2/config.cfg:/quake2/baseq2/config.cfg
+            - $PWD/cfg/ctf/server.cfg:/quake2/baseq2/server.cfg
+            - $PWD/cfg/baseq2/q2probans.cfg:/quake2/baseq2/q2probans.cfg
+            - $PWD/cfg/ctf/maps.lst:/quake2/ctf/maps.lst
         ports:
             - "27909:27909/udp"

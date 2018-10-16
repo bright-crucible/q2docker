@@ -1,0 +1,14 @@
+-----------------------
+Welcome to
+ The Last Kick Server
+-----------------------
+
+Map: Bloody Ice
+        * by MeatHead
+kick player is on
+kill bonus is off
+goalbonus is off
+Madness!
+timelimit 20
+scorelimit 20
+

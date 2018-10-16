@@ -1,0 +1,16 @@
+-----------------------
+Welcome to
+ The Last Kick Server
+-----------------------
+
+Map: Wild Wild Kick
+I like how the author
+apologizes for this
+map in the readme.
+
+kick player is off
+kill bonus is off
+goal bonus is off
+timelimit 15
+scorelimit 10
+

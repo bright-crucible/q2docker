@@ -1,0 +1,13 @@
+-----------------------
+Welcome to
+ The Last Kick Server
+-----------------------
+
+Aztec Arena by big0nes
+
+kick player is on
+kill bonus is off
+goal bonus is off
+timelimit 20
+scorelimit 10
+

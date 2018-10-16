@@ -1,0 +1,14 @@
+-----------------------
+Welcome to
+ The Last Kick Server
+-----------------------
+
+The Kick Castle
+by >BC>neXus
+
+kick player is off
+kill bonus is off
+goal bonus is off
+timelimit 20
+scorelimit 15
+

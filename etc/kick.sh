@@ -8,4 +8,4 @@ screen -A -m -d -S kick ./r1q2ded-old \
            +exec r1bans.cfg +map kickback
 
 sleep 5
-exec tail -f /dev/null
+exec tail -f /quake2/kick/qconsole.log

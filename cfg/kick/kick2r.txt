@@ -1,0 +1,13 @@
+-----------------------
+Welcome to
+ The Last Kick Server
+-----------------------
+
+Kick 2: The Revenge
+
+kick player is on
+kill bonus is off
+goal bonus is on
+timelimit 20
+scorelimit 15
+

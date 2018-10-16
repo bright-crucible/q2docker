@@ -1,0 +1,13 @@
+-----------------------
+Welcome to
+ The Last Kick Server
+-----------------------
+
+The Outpost
+ -by big0nes
+
+kick player is on
+goal bonus is on
+timelimit 17
+scorelimit 7
+

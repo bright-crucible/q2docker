@@ -10,4 +10,4 @@ screen -A -m -d -S q2dm64 ./q2proded \
            +setmaster master.q2servers.com +exec q2probans.cfg +map base64
 
 sleep 5
-exec tail -f /dev/null
+exec tail -f /quake2/baseq2/logs/q2dm64.log

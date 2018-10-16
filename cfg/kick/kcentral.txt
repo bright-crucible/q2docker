@@ -1,0 +1,13 @@
+-----------------------
+Welcome to
+ The Last Kick Server
+-----------------------
+
+Map: Kick Central
+
+kick player is on
+kill bonus is off
+goal bonus is on
+timelimit 25
+scorelimit 15
+

@@ -1,0 +1,13 @@
+-----------------------
+Welcome to
+ The Last Kick Server
+-----------------------
+
+Map: kick1
+
+kick player is on
+kill bonus is off
+goal bonus is off
+timelimit 10
+scorelimit 25
+

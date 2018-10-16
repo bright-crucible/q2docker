@@ -9,4 +9,4 @@ screen -A -m -d -S roguedm ./q2proded \
            +setmaster master.q2servers.com +exec q2probans.cfg +map rdm1
 
 sleep 5
-exec tail -f /dev/null
+exec tail -f /quake2/rogue/logs/console.log

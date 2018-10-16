@@ -8,4 +8,4 @@ screen -A -m -d -S q2coop ./r1q2ded.x86_64 \
            +exec coop.cfg +set public 1 +exec r1bans.cfg +map base1
 
 sleep 5
-exec tail -f /dev/null
+exec tail -f /quake2/baseq2/qconsole.log

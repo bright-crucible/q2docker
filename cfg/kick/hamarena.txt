@@ -1,0 +1,10 @@
+-----------------------
+Welcome to
+ The Last Kick Server
+-----------------------
+
+Map: HAMMERtown Arena
+goalbonus is on
+timelimit 20
+scorelimit 10
+

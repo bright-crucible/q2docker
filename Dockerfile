@@ -226,8 +226,8 @@ RUN git clone https://github.com/skullernet/q2pro.git
 RUN git clone https://bitbucket.org/jwaggoner/lasermine.git
 
 WORKDIR /var/local/q2pro
-COPY etc/q2pro.patch /var/local/q2pro
-RUN echo 'CPU=x86' > .config && git apply q2pro.patch && \
+COPY etc/q2pro-i386.patch /var/local/q2pro
+RUN echo 'CPU=x86' > .config && git apply q2pro-i386.patch && \
         make q2proded && cp q2proded /quake2/q2proded-i386
 
 WORKDIR /var/local/lasermine

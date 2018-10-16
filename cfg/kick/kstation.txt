@@ -1,0 +1,14 @@
+-----------------------
+Welcome to
+ The Last Kick Server
+-----------------------
+
+Map: Kick Station
+
+kick player is off
+kill bonus is off
+goal bonus is off
+timelimit 25
+scorelimit 10
+ball_time 45
+

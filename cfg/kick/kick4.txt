@@ -1,0 +1,10 @@
+-----------------------
+Welcome to
+ The Last Kick Server
+-----------------------
+
+Map: kick4
+goalbonus is off
+timelimit 20
+scorelimit 30
+
