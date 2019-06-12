@@ -1,4 +1,4 @@
-FROM alpine:3.8 as buildq2pro
+FROM alpine:latest as buildq2pro
 RUN apk add --no-cache \
     git make libcurl \
     zlib-dev linux-headers \
@@ -43,7 +43,7 @@ RUN make q2proded && make gamex86_64.so
 
 
 
-FROM alpine:3.8 as q2probase
+FROM alpine:latest as q2probase
 RUN apk add --no-cache \
         screen zlib tzdata
 ENV TZ America/Los_Angeles
