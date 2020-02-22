@@ -7,7 +7,7 @@ Setup my various Quake2 servers in containers using Docker. This is unlikely to 
 - git
 - Quake2 Assets
 - make
-- python 2.7
+- python 3
 - [virtualenv](https://virtualenv.pypa.io/en/stable/installation/)
 
 ## Installation
