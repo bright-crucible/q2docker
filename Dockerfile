@@ -13,7 +13,10 @@ WORKDIR /var/local/xatrix
 #OPTION 1:
 #COPY data/mirror/xatrixsrc320.shar.Z /var/local/xatrix
 #OPTION 2:
-RUN wget ftp://ftp.gamers.org/pub/idgames/idstuff/quake2/source/xatrixsrc320.shar.Z
+#RUN wget ftp://ftp.gamers.org/pub/idgames/idstuff/quake2/source/xatrixsrc320.shar.Z
+RUN wget \
+        -U "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1)" \
+        http://ftp.gamers.org/pub/idgames/idstuff/quake2/source/xatrixsrc320.shar.Z
 #OPTION 1 or 2: sometimes gamers.org refuses connections
 RUN zcat xatrixsrc320.shar.Z | sed '98,438d' > xatrix.shar && \
         chmod 755 xatrix.shar && ./xatrix.shar
@@ -26,7 +29,10 @@ WORKDIR /var/local/rogue
 #OPTION 1
 #COPY data/mirror/roguesrc320.shar.Z /var/local/rogue
 #OPTION 2
-RUN wget ftp://ftp.gamers.org/pub/idgames/idstuff/quake2/source/roguesrc320.shar.Z
+#RUN wget ftp://ftp.gamers.org/pub/idgames/idstuff/quake2/source/roguesrc320.shar.Z
+RUN wget \
+        -U "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1)" \
+        http://ftp.gamers.org/pub/idgames/idstuff/quake2/source/roguesrc320.shar.Z
 #OPTION 1 or 2: sometimes gamers.org refuses connections
 RUN zcat roguesrc320.shar.Z | sed '111,451d' > rogue.shar && \
         chmod 755 rogue.shar && ./rogue.shar
@@ -117,7 +123,10 @@ WORKDIR /var/local/xatrix
 #OPTION 1:
 #COPY data/mirror/xatrixsrc320.shar.Z /var/local/xatrix
 #OPTION 2:
-RUN wget ftp://ftp.gamers.org/pub/idgames/idstuff/quake2/source/xatrixsrc320.shar.Z
+#RUN wget ftp://ftp.gamers.org/pub/idgames/idstuff/quake2/source/xatrixsrc320.shar.Z
+RUN wget \
+        -U "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1)" \
+        http://ftp.gamers.org/pub/idgames/idstuff/quake2/source/xatrixsrc320.shar.Z
 #OPTION 1 or 2: sometimes gamers.org refuses connections
 RUN zcat xatrixsrc320.shar.Z | sed '98,438d' > xatrix.shar && \
         chmod 755 xatrix.shar && ./xatrix.shar
@@ -130,7 +139,10 @@ WORKDIR /var/local/rogue
 #OPTION 1
 #COPY data/mirror/roguesrc320.shar.Z /var/local/rogue
 #OPTION 2
-RUN wget ftp://ftp.gamers.org/pub/idgames/idstuff/quake2/source/roguesrc320.shar.Z
+#RUN wget ftp://ftp.gamers.org/pub/idgames/idstuff/quake2/source/roguesrc320.shar.Z
+RUN wget \
+        -U "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1)" \
+        http://ftp.gamers.org/pub/idgames/idstuff/quake2/source/roguesrc320.shar.Z
 #OPTION 1 or 2: sometimes gamers.org refuses connections
 RUN zcat roguesrc320.shar.Z | sed '111,451d' > rogue.shar && \
         chmod 755 rogue.shar && ./rogue.shar
