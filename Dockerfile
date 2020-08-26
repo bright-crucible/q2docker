@@ -126,7 +126,8 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime \
         zlib-devel \
         which \
         screen \
-        wget
+        wget \
+    && yum clean all
 
 WORKDIR /var/local
 RUN mkdir \
