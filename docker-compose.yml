@@ -119,7 +119,7 @@ services:
             - $PWD/cfg/kick/kick.ini:/quake2/kick/kick.ini
             - $PWD/cfg/kick/welcome.txt:/quake2/kick/welcome.txt
             - $PWD/cfg/kick/askl1.txt:/quake2/kick/askl1.txt
-            - $PWD/cfg/kick/azarena.txt.txt:/quake2/kick/azarena.txt
+            - $PWD/cfg/kick/azarena.txt:/quake2/kick/azarena.txt
             - $PWD/cfg/kick/fragball.txt:/quake2/kick/fragball.txt
             - $PWD/cfg/kick/hamarena.txt:/quake2/kick/hamarena.txt
             - $PWD/cfg/kick/ice.txt:/quake2/kick/ice.txt
