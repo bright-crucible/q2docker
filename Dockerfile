@@ -118,16 +118,18 @@ CMD ["/usr/local/bin/roguedm.sh"]
 
 
 
-FROM centos:7 as buildr1q2
+FROM debian:10 as buildr1q2
 ENV TZ=America/Los_Angeles
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime \
-    && yum -y groupinstall 'Development Tools' \
-    && yum -y install \
-        zlib-devel \
-        which \
+    && echo $TZ > /etc/timezone \
+    && apt-get update \
+    && apt-get install -y \
+        build-essential \
+        git \
+        zlib1g-dev \
         screen \
         wget \
-    && yum clean all
+    && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /var/local
 RUN mkdir \
@@ -187,13 +189,15 @@ RUN git apply q2pro.patch \
 
 
 
-FROM centos:7 as r1q2base
+FROM debian:10 as r1q2base
 ENV TZ=America/Los_Angeles
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime \
-    && yum -y install \
+    && echo $TZ > /etc/timezone \
+    && apt-get update \
+    && apt-get install -y \
         screen \
-        zlib \
-    && yum clean all \
+        zlib1g \
+    && rm -rf /var/lib/apt/lists/* \
     && mkdir -p \
         /quake2/baseq2 /quake2/xatrix /quake2/rogue \
         /var/local/xatrix/release /var/local/rogue/release \
@@ -236,14 +240,16 @@ CMD ["/usr/local/bin/roguecoop.sh"]
 
 
 
-FROM i386/centos:7 as kick
+FROM i386/debian:10 as kick
 ENV TZ=America/Los_Angeles
-RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime
-RUN yum -y install \
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime \
+    && echo $TZ > /etc/timezone \
+    && apt-get update \
+    && apt-get install -y \
         screen \
         unzip \
-        zlib \
-    && yum clean all \
+        zlib1g \
+    && rm -rf /var/lib/apt/lists/* \
     && mkdir -p \
         /quake2/baseq2 \
         /quake2/kick
@@ -265,15 +271,17 @@ CMD ["/usr/local/bin/kick.sh"]
 
 
 
-FROM i386/centos:7 as ctf
+FROM i386/debian:10 as ctf
 ENV TZ=America/Los_Angeles
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime \
-    && yum -y groupinstall 'Development Tools' \
-    && yum -y install \
-        zlib-devel \
-        which \
+    && echo $TZ > /etc/timezone \
+    && apt-get update \
+    && apt-get install -y \
+        build-essential \
+        git \
+        zlib1g-dev \
         screen \
-    && yum clean all \
+    && rm -rf /var/lib/apt/lists/* \
     && mkdir -p \
         /quake2/baseq2 \
         /quake2/ctf
