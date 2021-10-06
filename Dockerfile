@@ -28,10 +28,12 @@ RUN wget \
         -U "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1)" \
         http://ftp.gamers.org/pub/idgames/idstuff/quake2/source/xatrixsrc320.shar.Z \
     && zcat xatrixsrc320.shar.Z | sed '98,438d' > xatrix.shar \
-    && chmod 755 xatrix.shar && ./xatrix.shar
+    && chmod 755 xatrix.shar \
+    && ./xatrix.shar
 #patch it then compile it
 COPY etc/xatrix.patch /var/local/xatrix
-RUN patch < xatrix.patch && make build_release
+RUN patch < xatrix.patch \
+    && make build_release
 #cd data/xatrix;ln -s /var/local/xatrix/release/game.so gamex86_64.so
 
 WORKDIR /var/local/rogue
