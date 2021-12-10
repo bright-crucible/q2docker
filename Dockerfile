@@ -120,7 +120,7 @@ CMD ["/usr/local/bin/roguedm.sh"]
 
 
 
-FROM debian:10 as buildr1q2
+FROM debian:11 as buildr1q2
 ENV TZ=America/Los_Angeles
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime \
     && echo $TZ > /etc/timezone \
@@ -191,7 +191,7 @@ RUN git apply q2pro.patch \
 
 
 
-FROM debian:10 as r1q2base
+FROM debian:11 as r1q2base
 ENV TZ=America/Los_Angeles
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime \
     && echo $TZ > /etc/timezone \
@@ -242,7 +242,7 @@ CMD ["/usr/local/bin/roguecoop.sh"]
 
 
 
-FROM i386/debian:10 as kick
+FROM i386/debian:11 as kick
 ENV TZ=America/Los_Angeles
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime \
     && echo $TZ > /etc/timezone \
@@ -273,7 +273,7 @@ CMD ["/usr/local/bin/kick.sh"]
 
 
 
-FROM i386/debian:10 as ctf
+FROM i386/debian:11 as ctf
 ENV TZ=America/Los_Angeles
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime \
     && echo $TZ > /etc/timezone \

@@ -1,8 +1,8 @@
 diff --git a/Makefile b/Makefile
-index bc2625c..9793998 100644
+index bc2625c..77f5b5a 100644
 --- a/Makefile
 +++ b/Makefile
-@@ -33,7 +33,8 @@
+@@ -33,13 +33,14 @@
  
  ARCH=i386
  #ARCH=x86_64
@@ -12,6 +12,13 @@ index bc2625c..9793998 100644
  BASE_CFLAGS=-Dstricmp=strcasecmp -D_strnicmp=strncasecm -Dstrnicmp=strncasecmp -Dstrcmpi=strcasecmp
  
  #use these cflags to optimize it
+ CFLAGS=$(BASE_CFLAGS) -m32 -O6 -ffast-math -funroll-loops \
+ 	-fomit-frame-pointer -fexpensive-optimizations -falign-loops=2 \
+-	-falign-jumps=2 -falign-functions=2
++	-falign-jumps=2 -falign-functions=2 -fcommon
+ #use these when debugging 
+ #CFLAGS=$(BASE_CFLAGS) -g
+ 
 diff --git a/g_items.c b/g_items.c
 index 8a9c4d7..ee661f7 100644
 --- a/g_items.c
