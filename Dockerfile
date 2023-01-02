@@ -9,7 +9,22 @@ RUN apk add --no-cache \
         screen \
         util-linux \
         wget \
-        tzdata
+        tzdata \
+        meson \
+        openal-soft-dev \
+        libc6-compat \
+        sdl2-dev \
+        libpng-dev \
+        libjpeg-turbo-dev \
+        nasm \
+        mesa-dev \
+        curl-dev \
+        libx11-dev \
+        libxi-dev \
+        libogg-dev \
+        libvorbis-dev \
+        wayland-protocols \
+        wayland-dev
 ENV TZ America/Los_Angeles
 
 WORKDIR /var/local
@@ -57,8 +72,9 @@ RUN patch < rogue.patch \
 WORKDIR /var/local/q2pro
 COPY etc/q2pro.patch /var/local/q2pro
 RUN git apply q2pro.patch \
-    && make q2proded \
-    && make gamex86_64.so
+    && meson setup builddir \
+    && meson configure -Dsystem-wide=false builddir \
+    && ninja -C builddir -v
 
 
 
@@ -73,8 +89,8 @@ RUN mkdir -p \
         /quake2/baseq2 /quake2/xatrix /quake2/rogue \
         /var/local/xatrix/release /var/local/rogue/release \
         /var/local/q2pro
-COPY --from=buildq2pro /var/local/q2pro/q2proded /quake2/
-COPY --from=buildq2pro /var/local/q2pro/gamex86_64.so /var/local/q2pro/
+COPY --from=buildq2pro /var/local/q2pro/builddir/q2proded /quake2/
+COPY --from=buildq2pro /var/local/q2pro/builddir/gamex86_64.so /var/local/q2pro/
 COPY --from=buildq2pro /var/local/xatrix/release/game.so /var/local/xatrix/release/
 COPY --from=buildq2pro /var/local/rogue/release/game.so /var/local/rogue/release/
 RUN addgroup -S q2 -g 1002 \
@@ -124,6 +140,7 @@ FROM debian:11 as buildr1q2
 ENV TZ=America/Los_Angeles
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime \
     && echo $TZ > /etc/timezone \
+    && echo "deb http://deb.debian.org/debian bullseye-backports main" > /etc/apt/sources.list.d/bullseye-backports.list \
     && apt-get update \
     && apt-get install -y \
         build-essential \
@@ -131,6 +148,21 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime \
         zlib1g-dev \
         screen \
         wget \
+        meson/bullseye-backports \
+        libc6-dev \
+        libsdl2-dev \
+        libopenal-dev \
+        libpng-dev \
+        libjpeg-dev \
+        zlib1g-dev \
+        mesa-common-dev \
+        libcurl4-gnutls-dev \
+        libx11-dev \
+        libxi-dev \
+        libwayland-dev \
+        wayland-protocols \
+        libogg-dev \
+        libvorbis-dev \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /var/local
@@ -186,7 +218,9 @@ RUN patch < rogue.patch \
 WORKDIR /var/local/q2pro
 COPY etc/q2pro.patch /var/local/q2pro
 RUN git apply q2pro.patch \
-    && make gamex86_64.so
+    && meson setup builddir \
+    && meson configure -Dsystem-wide=false builddir \
+    && ninja -C builddir -v
 
 
 
@@ -206,7 +240,7 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime \
         /var/local/r1q2-archive/binaries/r1q2ded \
         /var/local/q2pro
 COPY --from=buildr1q2 /var/local/r1q2-archive/binaries/r1q2ded/r1q2ded /quake2/r1q2ded.x86_64
-COPY --from=buildr1q2 /var/local/q2pro/gamex86_64.so /var/local/q2pro/
+COPY --from=buildr1q2 /var/local/q2pro/builddir/gamex86_64.so /var/local/q2pro/
 COPY --from=buildr1q2 /var/local/xatrix/release/game.so /var/local/xatrix/release/
 COPY --from=buildr1q2 /var/local/rogue/release/game.so /var/local/rogue/release/
 RUN groupadd -g 1002 q2 \
@@ -277,12 +311,29 @@ FROM i386/debian:11 as ctf
 ENV TZ=America/Los_Angeles
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime \
     && echo $TZ > /etc/timezone \
+    && echo "deb http://deb.debian.org/debian bullseye-backports main" > /etc/apt/sources.list.d/bullseye-backports.list \
     && apt-get update \
     && apt-get install -y \
         build-essential \
         git \
         zlib1g-dev \
         screen \
+        meson/bullseye-backports \
+        libc6-dev \
+        libsdl2-dev \
+        libopenal-dev \
+        libpng-dev \
+        libjpeg-dev \
+        zlib1g-dev \
+        mesa-common-dev \
+        libcurl4-gnutls-dev \
+        libx11-dev \
+        libxi-dev \
+        libwayland-dev \
+        wayland-protocols \
+        libdecor-0-dev \
+        libogg-dev \
+        libvorbis-dev \
     && rm -rf /var/lib/apt/lists/* \
     && mkdir -p \
         /quake2/baseq2 \
@@ -296,8 +347,10 @@ WORKDIR /var/local/q2pro
 COPY etc/q2pro-i386.patch /var/local/q2pro
 RUN echo 'CPU=x86' > .config \
     && git apply q2pro-i386.patch \
-    && make q2proded \
-    && cp q2proded /quake2/q2proded-i386
+    && meson setup builddir \
+    && meson configure -Dsystem-wide=false builddir \
+    && ninja -C builddir -v \
+    && cp builddir/q2proded /quake2/q2proded-i386
 
 WORKDIR /var/local/lasermine
 COPY etc/lasermine.patch /var/local/lasermine
