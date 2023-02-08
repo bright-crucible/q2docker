@@ -1,2 +1,2 @@
 #!/bin/bash
-./venv/bin/docker-compose exec "$@" screen -x "$@"
+docker compose exec "$@" screen -x "$@"

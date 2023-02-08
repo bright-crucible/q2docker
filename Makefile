@@ -1,9 +1,7 @@
-.PHONY: build help logs start status stop venv \
+.PHONY: build help logs start status stop \
 		q2coop xatrixcoop roguecoop \
 		q2dm q2dm64 xatrixdm roguedm \
 		kick ctf
-
-COMPOSE="venv/bin/docker-compose"
 
 help:
 	@echo "Welcome to Q2 Docker!"
@@ -25,13 +23,12 @@ help:
 	@echo " start      - launch the containers"
 	@echo " status     - show running container ps info"
 	@echo " stop       - stop containers"
-	@echo " venv       - create virtual environment for docker-compose"
 
 build:
 	@bin/build_quake2
 
 logs:
-	@$(COMPOSE) logs
+	docker compose logs
 
 q2coop:
 	@bin/quake2_shell "$@"
@@ -64,10 +61,7 @@ start:
 	@bin/start_quake2
 
 status:
-	@$(COMPOSE) ps
+	docker compose ps
 
 stop:
 	@bin/stop_quake2
-
-venv:
-	@bin/build_virtualenv

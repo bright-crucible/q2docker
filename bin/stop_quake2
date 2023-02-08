@@ -1,7 +1,7 @@
 #!/bin/bash
-for q2 in `./venv/bin/docker-compose ps --services`
+for q2 in `docker compose ps --services`
 do
     echo "Quitting ${q2}"
-    ./venv/bin/docker-compose exec "${q2}" screen -p 0 -S "${q2}" -X stuff "quit\015"
+    docker compose exec "${q2}" screen -p 0 -S "${q2}" -X stuff "quit\015"
 done
-./venv/bin/docker-compose down --volumes --remove-orphans
+docker compose down --volumes --remove-orphans

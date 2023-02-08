@@ -15,9 +15,6 @@ Setup my various Quake2 servers in containers using Docker. This is unlikely to 
 $ git clone https://github.com/bright-crucible/q2docker.git
 $ cd q2docker
 
-# Create a python virtualenv for docker-compose
-$ make venv
-
 # Create a directory to store the mod and game assets
 $ mkdir data
 $ cp -r -v /path/to/quake2/baseq2/ data/
@@ -57,7 +54,6 @@ Commands:
  start      - launch the containers
  status     - show running container ps info
  stop       - stop containers
- venv       - create virtual environment for docker-compose
  ```
 
  ## Acknowledgements
