@@ -1,8 +1,8 @@
-diff --git a/src/baseq2/g_phys.c b/src/baseq2/g_phys.c
-index cf6181e..65befb0 100644
---- a/src/baseq2/g_phys.c
-+++ b/src/baseq2/g_phys.c
-@@ -912,6 +912,7 @@ void G_RunEntity(edict_t *ent)
+diff --git a/src/game/g_phys.c b/src/game/g_phys.c
+index 10029b7e..7dc69cb0 100644
+--- a/src/game/g_phys.c
++++ b/src/game/g_phys.c
+@@ -870,6 +870,7 @@ void G_RunEntity(edict_t *ent)
      case MOVETYPE_STOP:
          SV_Physics_Pusher(ent);
          break;

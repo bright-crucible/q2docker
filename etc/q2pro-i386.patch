@@ -1,8 +1,8 @@
 diff --git a/src/server/game.c b/src/server/game.c
-index b076b39..4dac9e3 100644
+index a0744cff..ae9b5898 100644
 --- a/src/server/game.c
 +++ b/src/server/game.c
-@@ -95,7 +95,7 @@ static void PF_Unicast(edict_t *ent, qboolean reliable)
+@@ -101,7 +101,7 @@ static void PF_Unicast(edict_t *ent, qboolean reliable)
  
      client = svs.client_pool + clientNum;
      if (client->state <= cs_zombie) {
@@ -11,7 +11,7 @@ index b076b39..4dac9e3 100644
          goto clear;
      }
  
-@@ -237,7 +237,7 @@ static void PF_cprintf(edict_t *ent, int level, const char *fmt, ...)
+@@ -249,7 +249,7 @@ static void PF_cprintf(edict_t *ent, int level, const char *fmt, ...)
  
      client = svs.client_pool + clientNum;
      if (client->state <= cs_zombie) {
