@@ -136,11 +136,10 @@ CMD ["/usr/local/bin/roguedm.sh"]
 
 
 
-FROM debian:11 as buildr1q2
+FROM debian:12 as buildr1q2
 ENV TZ=America/Los_Angeles
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime \
     && echo $TZ > /etc/timezone \
-    && echo "deb http://deb.debian.org/debian bullseye-backports main" > /etc/apt/sources.list.d/bullseye-backports.list \
     && apt-get update \
     && apt-get install -y \
         build-essential \
@@ -148,7 +147,7 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime \
         zlib1g-dev \
         screen \
         wget \
-        meson/bullseye-backports \
+        meson \
         libc6-dev \
         libsdl2-dev \
         libopenal-dev \
@@ -177,6 +176,7 @@ RUN git apply r1q2-archive.patch
 WORKDIR /var/local/r1q2-archive/binaries
 RUN mkdir -p \
         r1q2ded/.depends \
+    && touch cmd.d \
     && make r1q2ded
 
 WORKDIR /var/local/xatrix
@@ -225,7 +225,7 @@ RUN git apply q2pro.patch \
 
 
 
-FROM debian:11 as r1q2base
+FROM debian:12 as r1q2base
 ENV TZ=America/Los_Angeles
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime \
     && echo $TZ > /etc/timezone \
@@ -276,7 +276,7 @@ CMD ["/usr/local/bin/roguecoop.sh"]
 
 
 
-FROM i386/debian:11 as kick
+FROM i386/debian:12 as kick
 ENV TZ=America/Los_Angeles
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime \
     && echo $TZ > /etc/timezone \
@@ -307,18 +307,17 @@ CMD ["/usr/local/bin/kick.sh"]
 
 
 
-FROM i386/debian:11 as ctf
+FROM i386/debian:12 as ctf
 ENV TZ=America/Los_Angeles
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime \
     && echo $TZ > /etc/timezone \
-    && echo "deb http://deb.debian.org/debian bullseye-backports main" > /etc/apt/sources.list.d/bullseye-backports.list \
     && apt-get update \
     && apt-get install -y \
         build-essential \
         git \
         zlib1g-dev \
         screen \
-        meson/bullseye-backports \
+        meson \
         libc6-dev \
         libsdl2-dev \
         libopenal-dev \
