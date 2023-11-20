@@ -139,7 +139,6 @@ CMD ["/usr/local/bin/roguedm.sh"]
 FROM debian:12 as buildr1q2
 ENV TZ=America/Los_Angeles
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime \
-    && echo $TZ > /etc/timezone \
     && apt-get update \
     && apt-get install -y \
         build-essential \
@@ -228,7 +227,6 @@ RUN git apply q2pro.patch \
 FROM debian:12 as r1q2base
 ENV TZ=America/Los_Angeles
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime \
-    && echo $TZ > /etc/timezone \
     && apt-get update \
     && apt-get install -y \
         screen \
@@ -279,7 +277,6 @@ CMD ["/usr/local/bin/roguecoop.sh"]
 FROM i386/debian:12 as kick
 ENV TZ=America/Los_Angeles
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime \
-    && echo $TZ > /etc/timezone \
     && apt-get update \
     && apt-get install -y \
         screen \
@@ -310,7 +307,6 @@ CMD ["/usr/local/bin/kick.sh"]
 FROM i386/debian:12 as ctf
 ENV TZ=America/Los_Angeles
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime \
-    && echo $TZ > /etc/timezone \
     && apt-get update \
     && apt-get install -y \
         build-essential \
