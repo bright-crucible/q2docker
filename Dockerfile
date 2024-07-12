@@ -1,4 +1,4 @@
-FROM alpine:latest as buildq2pro
+FROM alpine:latest AS buildq2pro
 RUN apk add --no-cache \
         git \
         make \
@@ -79,7 +79,7 @@ RUN git apply q2pro.patch \
 
 
 
-FROM alpine:latest as q2probase
+FROM alpine:latest AS q2probase
 RUN apk add --no-cache \
         screen \
         zlib \
@@ -100,7 +100,7 @@ RUN addgroup -S q2 -g 1002 \
 
 
 
-FROM q2probase as q2dm
+FROM q2probase AS q2dm
 COPY etc/q2dm.sh /usr/local/bin/
 USER 1002:1002
 WORKDIR /quake2
@@ -109,7 +109,7 @@ CMD ["/usr/local/bin/q2dm.sh"]
 
 
 
-FROM q2probase as q2dm64
+FROM q2probase AS q2dm64
 COPY etc/q2dm64.sh /usr/local/bin/
 USER 1002:1002
 WORKDIR /quake2
@@ -118,7 +118,7 @@ CMD ["/usr/local/bin/q2dm64.sh"]
 
 
 
-FROM q2probase as xatrixdm
+FROM q2probase AS xatrixdm
 COPY etc/xatrixdm.sh /usr/local/bin/
 USER 1002:1002
 WORKDIR /quake2
@@ -127,7 +127,7 @@ CMD ["/usr/local/bin/xatrixdm.sh"]
 
 
 
-FROM q2probase as roguedm
+FROM q2probase AS roguedm
 COPY etc/roguedm.sh /usr/local/bin/
 USER 1002:1002
 WORKDIR /quake2
@@ -136,7 +136,7 @@ CMD ["/usr/local/bin/roguedm.sh"]
 
 
 
-FROM debian:12 as buildr1q2
+FROM debian:12 AS buildr1q2
 ENV TZ=America/Los_Angeles
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime \
     && apt-get update \
@@ -224,7 +224,7 @@ RUN git apply q2pro.patch \
 
 
 
-FROM debian:12 as r1q2base
+FROM debian:12 AS r1q2base
 ENV TZ=America/Los_Angeles
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime \
     && apt-get update \
@@ -248,7 +248,7 @@ RUN groupadd -g 1002 q2 \
 
 
 
-FROM r1q2base as q2coop
+FROM r1q2base AS q2coop
 COPY etc/q2coop.sh /usr/local/bin/
 USER 1002:1002
 WORKDIR /quake2
@@ -257,7 +257,7 @@ CMD ["/usr/local/bin/q2coop.sh"]
 
 
 
-FROM r1q2base as xatrixcoop
+FROM r1q2base AS xatrixcoop
 COPY etc/xatrixcoop.sh /usr/local/bin/
 USER 1002:1002
 WORKDIR /quake2
@@ -265,7 +265,7 @@ CMD ["/usr/local/bin/xatrixcoop.sh"]
 
 
 
-FROM r1q2base as roguecoop
+FROM r1q2base AS roguecoop
 COPY etc/roguecoop.sh /usr/local/bin/
 USER 1002:1002
 WORKDIR /quake2
@@ -274,7 +274,7 @@ CMD ["/usr/local/bin/roguecoop.sh"]
 
 
 
-FROM i386/debian:12 as kick
+FROM i386/debian:12 AS kick
 ENV TZ=America/Los_Angeles
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime \
     && apt-get update \
@@ -304,7 +304,7 @@ CMD ["/usr/local/bin/kick.sh"]
 
 
 
-FROM i386/debian:12 as ctf
+FROM i386/debian:12 AS ctf
 ENV TZ=America/Los_Angeles
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime \
     && apt-get update \
