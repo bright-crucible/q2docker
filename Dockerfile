@@ -28,7 +28,10 @@ RUN apk add --no-cache \
 ENV TZ America/Los_Angeles
 
 WORKDIR /var/local
-RUN git clone https://github.com/skullernet/q2pro.git \
+#RUN git clone https://github.com/skullernet/q2pro.git \
+RUN wget -O- https://github.com/skullernet/q2pro/archive/refs/tags/r3510.tar.gz \
+    | tar xz \
+    && mv q2pro-r3510 q2pro \
     && mkdir \
         xatrix \
         rogue
@@ -329,13 +332,17 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime \
         libdecor-0-dev \
         libogg-dev \
         libvorbis-dev \
+        wget \
     && rm -rf /var/lib/apt/lists/* \
     && mkdir -p \
         /quake2/baseq2 \
         /quake2/ctf
 
 WORKDIR /var/local
-RUN git clone https://github.com/skullernet/q2pro.git \
+#RUN git clone https://github.com/skullernet/q2pro.git \
+RUN wget -O- https://github.com/skullernet/q2pro/archive/refs/tags/r3510.tar.gz \
+    | tar xz \
+    && mv q2pro-r3510 q2pro \
     && git clone https://bitbucket.org/jwaggoner/lasermine.git
 
 WORKDIR /var/local/q2pro
