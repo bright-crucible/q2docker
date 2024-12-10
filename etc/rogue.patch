@@ -1,6 +1,6 @@
-diff -u ./g_items.c ../modified/g_items.c
---- ./g_items.c	2018-10-11 15:29:54.109513807 -0700
-+++ ../modified/g_items.c	2018-10-11 15:28:54.366819844 -0700
+diff -u original/g_items.c modified/g_items.c
+--- original/g_items.c	2024-12-09 16:43:02.149831727 -0800
++++ modified/g_items.c	2024-12-09 16:40:18.035198098 -0800
 @@ -34,9 +34,9 @@
  gitem_armor_t combatarmor_info	= { 50, 100, .60, .30, ARMOR_COMBAT};
  gitem_armor_t bodyarmor_info	= {100, 200, .80, .60, ARMOR_BODY};
@@ -14,9 +14,9 @@ diff -u ./g_items.c ../modified/g_items.c
  static int	power_screen_index;
  static int	power_shield_index;
  
-diff -u ./g_local.h ../modified/g_local.h
---- ./g_local.h	2018-10-11 15:29:54.124513479 -0700
-+++ ../modified/g_local.h	2018-10-11 15:28:54.465817679 -0700
+diff -u original/g_local.h modified/g_local.h
+--- original/g_local.h	2024-12-09 16:43:02.149831727 -0800
++++ modified/g_local.h	2024-12-09 16:40:18.035198098 -0800
 @@ -22,13 +22,13 @@
  //==================================================================
  
@@ -33,9 +33,9 @@ diff -u ./g_local.h ../modified/g_local.h
  #endif
  #endif
  
-diff -u ./g_phys.c ../modified/g_phys.c
---- ./g_phys.c	2018-10-11 15:29:54.270510288 -0700
-+++ ../modified/g_phys.c	2018-10-11 15:28:54.391819297 -0700
+diff -u original/g_phys.c modified/g_phys.c
+--- original/g_phys.c	2024-12-09 16:43:02.149831727 -0800
++++ modified/g_phys.c	2024-12-09 16:40:18.036198102 -0800
 @@ -962,6 +962,7 @@
  		case MOVETYPE_STOP:
  			SV_Physics_Pusher (ent);
@@ -44,3 +44,27 @@ diff -u ./g_phys.c ../modified/g_phys.c
  		case MOVETYPE_NONE:
  			SV_Physics_None (ent);
  			break;
+diff -u original/m_boss31.c modified/m_boss31.c
+--- original/m_boss31.c	2024-12-09 16:43:02.149831727 -0800
++++ modified/m_boss31.c	2024-12-09 16:40:57.501349762 -0800
+@@ -9,7 +9,7 @@
+ #include "g_local.h"
+ #include "m_boss31.h"
+ 
+-extern SP_monster_makron (edict_t *self);
++extern void SP_monster_makron (edict_t *self);
+ qboolean visible (edict_t *self, edict_t *other);
+ 
+ static int	sound_pain1;
+diff -u original/m_flyer.c modified/m_flyer.c
+--- original/m_flyer.c	2024-12-09 16:43:02.150831731 -0800
++++ modified/m_flyer.c	2024-12-09 16:41:39.197509997 -0800
+@@ -720,7 +720,7 @@
+ }
+ 
+ // PMM - kamikaze code .. blow up if blocked	
+-int flyer_blocked (edict_t *self, float dist)
++qboolean flyer_blocked (edict_t *self, float dist)
+ {
+ 	vec3_t origin;
+ 

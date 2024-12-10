@@ -1,6 +1,6 @@
-diff -u ./g_items.c ../modified/g_items.c
---- ./g_items.c	2018-10-11 10:50:28.752470207 -0700
-+++ ../modified/g_items.c	2018-10-11 10:52:44.312472127 -0700
+diff -u original/g_items.c modified/g_items.c
+--- original/g_items.c	2024-12-09 16:12:25.352515046 -0800
++++ modified/g_items.c	2024-12-09 16:15:14.202223502 -0800
 @@ -26,9 +26,9 @@
  gitem_armor_t combatarmor_info	= { 50, 100, .60, .30, ARMOR_COMBAT};
  gitem_armor_t bodyarmor_info	= {100, 200, .80, .60, ARMOR_BODY};
@@ -14,9 +14,9 @@ diff -u ./g_items.c ../modified/g_items.c
  static int	power_screen_index;
  static int	power_shield_index;
  
-diff -u ./g_phys.c ../modified/g_phys.c
---- ./g_phys.c	2018-10-11 10:50:28.822468658 -0700
-+++ ../modified/g_phys.c	2018-10-11 10:52:44.312472127 -0700
+diff -u original/g_phys.c modified/g_phys.c
+--- original/g_phys.c	2024-12-09 16:12:25.352515046 -0800
++++ modified/g_phys.c	2024-12-09 16:15:14.202223502 -0800
 @@ -933,6 +933,7 @@
  	case MOVETYPE_STOP:
  		SV_Physics_Pusher (ent);
@@ -25,3 +25,15 @@ diff -u ./g_phys.c ../modified/g_phys.c
  	case MOVETYPE_NONE:
  		SV_Physics_None (ent);
  		break;
+diff -u original/m_boss31.c modified/m_boss31.c
+--- original/m_boss31.c	2024-12-09 16:13:02.368668573 -0800
++++ modified/m_boss31.c	2024-12-09 16:15:14.203223506 -0800
+@@ -9,7 +9,7 @@
+ #include "g_local.h"
+ #include "m_boss31.h"
+ 
+-extern SP_monster_makron (edict_t *self);
++extern void SP_monster_makron (edict_t *self);
+ qboolean visible (edict_t *self, edict_t *other);
+ 
+ static int	sound_pain1;
