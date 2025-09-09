@@ -139,7 +139,7 @@ CMD ["/usr/local/bin/roguedm.sh"]
 
 
 
-FROM debian:12 AS buildr1q2
+FROM debian:13 AS buildr1q2
 ENV TZ=America/Los_Angeles
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime \
     && apt-get update \
@@ -227,7 +227,7 @@ RUN git apply q2pro.patch \
 
 
 
-FROM debian:12 AS r1q2base
+FROM debian:13 AS r1q2base
 ENV TZ=America/Los_Angeles
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime \
     && apt-get update \
@@ -277,7 +277,7 @@ CMD ["/usr/local/bin/roguecoop.sh"]
 
 
 
-FROM i386/debian:12 AS kick
+FROM i386/debian:13 AS kick
 ENV TZ=America/Los_Angeles
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime \
     && apt-get update \
@@ -307,7 +307,7 @@ CMD ["/usr/local/bin/kick.sh"]
 
 
 
-FROM i386/debian:12 AS ctf
+FROM i386/debian:13 AS ctf
 ENV TZ=America/Los_Angeles
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime \
     && apt-get update \

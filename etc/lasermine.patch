@@ -19,8 +19,32 @@ index bc2625c..77f5b5a 100644
  #use these when debugging 
  #CFLAGS=$(BASE_CFLAGS) -g
  
+diff --git a/admin.c b/admin.c
+index e87d34e..ee05695 100644
+--- a/admin.c
++++ b/admin.c
+@@ -87,7 +87,8 @@ void GetTime()
+ 	struct tm *ltime;  
+ 	time_t gmtime;     
+ 	time((unsigned long *)&gmtime);
+-	ltime=localtime((unsigned int *)&gmtime);
++	time_t now = time(NULL);
++	ltime = localtime(&now);
+ 
+ 	min = ltime->tm_min;
+ 	sec = ltime->tm_sec;
+@@ -127,7 +128,8 @@ void GetDate()
+     struct tm *ltime;  
+ 	time_t gmtime;     
+ 	time((unsigned long *)&gmtime);
+-	ltime=localtime((unsigned int *)&gmtime);
++	time_t now = time(NULL);
++	ltime = localtime(&now);
+   
+ 
+ 	month = ltime->tm_mon+1;
 diff --git a/g_items.c b/g_items.c
-index 8a9c4d7..ee661f7 100644
+index 8a9c4d7..fea7bed 100644
 --- a/g_items.c
 +++ b/g_items.c
 @@ -24,11 +24,11 @@ gitem_armor_t jacketarmor_info	= { 25,  50, .30, .00, ARMOR_JACKET};
@@ -40,6 +64,66 @@ index 8a9c4d7..ee661f7 100644
  
  #define HEALTH_IGNORE_MAX	1
  #define HEALTH_TIMED		2
+@@ -38,6 +38,10 @@ static int	quad_drop_timeout_hack;
+ 
+ //======================================================================
+ 
++void CTFDrop_Flag_Void(edict_t *ent, gitem_t *item) {
++	CTFDrop_Flag(ent, item);
++}
++
+ /*
+ ===============
+ GetItemByIndex
+@@ -2174,7 +2178,7 @@ tank commander's head
+ 		"item_flag_team1",
+ 		CTFPickup_Flag,
+ 		NULL,
+-		CTFDrop_Flag, //Should this be null if we don't want players to drop it manually?
++		CTFDrop_Flag_Void, //Should this be null if we don't want players to drop it manually?
+ 		NULL,
+ 		"ctf/flagtk.wav",
+ 		"players/male/flag1.md2", EF_FLAG1,
+@@ -2196,7 +2200,7 @@ tank commander's head
+ 		"item_flag_team2",
+ 		CTFPickup_Flag,
+ 		NULL,
+-		CTFDrop_Flag, //Should this be null if we don't want players to drop it manually?
++		CTFDrop_Flag_Void, //Should this be null if we don't want players to drop it manually?
+ 		NULL,
+ 		"ctf/flagtk.wav",
+ 		"players/male/flag2.md2", EF_FLAG2,
+diff --git a/oldmaps.c b/oldmaps.c
+index bdccc97..52e0b7f 100644
+--- a/oldmaps.c
++++ b/oldmaps.c
+@@ -85,7 +85,7 @@ void GetNextMapFromFile(edict_t *ent)
+ 	while (fp) 
+ 	{
+  		if (fscanf( fp, "%s", mapname ) == EOF ) break;
+-		fgets( message, 1000 ,fp);
++		fgets( message, sizeof(message) ,fp);
+ 		if (Q_stricmp (level.mapname, mapname)) break;
+ //		gi.dprintf("mapname:  %s - %s\n" ,mapname,message);
+ 
+@@ -93,7 +93,7 @@ void GetNextMapFromFile(edict_t *ent)
+ 	//found current map, now find next one.
+ 	if (fscanf( fp, "%s", mapname ) != EOF )
+ 	{
+-		fgets( message, 1000 ,fp);
++		fgets( message, sizeof(message) ,fp);
+ 
+ 	}
+ 	else
+@@ -101,7 +101,7 @@ void GetNextMapFromFile(edict_t *ent)
+         fseek(fp, 0, 0);
+ 		if (fscanf( fp, "%s", mapname ) != EOF )
+ 		{
+-			fgets( message, 1000 ,fp);
++			fgets( message, sizeof(message) ,fp);
+ 
+ 		}	
+ 	}
 diff --git a/p_weapon.c b/p_weapon.c
 index bc2c487..78fd65f 100644
 --- a/p_weapon.c
@@ -53,3 +137,15 @@ index bc2c487..78fd65f 100644
  static byte		is_silenced;
  
  
+diff --git a/stdlog.c b/stdlog.c
+index 465e51b..c1e0f97 100644
+--- a/stdlog.c
++++ b/stdlog.c
+@@ -22,6 +22,7 @@
+ #include "version.h"
+ 
+ #include <stdio.h>
++#include <unistd.h>
+ #include <stdlib.h>
+ #include <stdarg.h>
+ #include <time.h>
