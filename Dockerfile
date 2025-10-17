@@ -29,8 +29,11 @@ ENV TZ America/Los_Angeles
 
 WORKDIR /var/local
 #RUN git clone https://github.com/skullernet/q2pro.git \
-RUN wget -O- https://github.com/skullernet/q2pro/archive/refs/tags/r3510.tar.gz \
-    | tar xz \
+#The repo for q2pro has vanished :(
+#RUN wget -O- https://github.com/skullernet/q2pro/archive/refs/tags/r3510.tar.gz \
+#    | tar xz \
+COPY data/mirror/r3510.tar.gz /var/local
+RUN tar xvf r3510.tar.gz \
     && mv q2pro-r3510 q2pro \
     && mkdir \
         xatrix \
@@ -340,8 +343,11 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime \
 
 WORKDIR /var/local
 #RUN git clone https://github.com/skullernet/q2pro.git \
-RUN wget -O- https://github.com/skullernet/q2pro/archive/refs/tags/r3510.tar.gz \
-    | tar xz \
+#The repo for q2pro has vanished :(
+#RUN wget -O- https://github.com/skullernet/q2pro/archive/refs/tags/r3510.tar.gz \
+#    | tar xz \
+COPY data/mirror/r3510.tar.gz /var/local
+RUN tar xvf r3510.tar.gz \
     && mv q2pro-r3510 q2pro \
     && git clone https://bitbucket.org/jwaggoner/lasermine.git
 
