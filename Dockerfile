@@ -170,10 +170,12 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /var/local
+COPY data/mirror/r3510.tar.gz /var/local
 RUN mkdir \
         xatrix \
         rogue \
-    && git clone https://github.com/skullernet/q2pro.git \
+    && tar xvf r3510.tar.gz \
+    && mv q2pro-r3510 q2pro \
     && git clone https://github.com/tastyspleen/r1q2-archive.git
 COPY etc/r1q2-archive.patch /var/local/r1q2-archive
 WORKDIR /var/local/r1q2-archive
