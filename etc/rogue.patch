@@ -44,6 +44,18 @@ diff -u original/g_phys.c modified/g_phys.c
  		case MOVETYPE_NONE:
  			SV_Physics_None (ent);
  			break;
+diff -u original/Makefile modified/Makefile
+--- original/Makefile	2025-12-08 22:00:37.683696540 -0800
++++ modified/Makefile	2025-12-09 10:17:50.553539588 -0800
+@@ -3,7 +3,7 @@
+ BUILD_RELEASE_DIR=release
+ 
+ CC=gcc
+-BASE_CFLAGS=-Dstricmp=strcasecmp
++BASE_CFLAGS=-std=gnu11 -Dstricmp=strcasecmp
+ RELEASE_CFLAGS=$(BASE_CFLAGS) -ffast-math -funroll-loops \
+ 	-fomit-frame-pointer -fexpensive-optimizations
+ DEBUG_CFLAGS=$(BASE_CFLAGS) -g
 diff -u original/m_boss31.c modified/m_boss31.c
 --- original/m_boss31.c	2024-12-09 16:43:02.149831727 -0800
 +++ modified/m_boss31.c	2024-12-09 16:40:57.501349762 -0800
